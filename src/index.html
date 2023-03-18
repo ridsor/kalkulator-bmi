@@ -8,16 +8,19 @@
     <link rel="stylesheet" href="./index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet" />
   </head>
-  <body>
+  <body class="dark:bg-[#111]">
     <main>
       <section class="md:px-8">
         <div
-          class="container mt-10 tracking-wider md:mx-auto text-[#0f0f0f] text-justify text-sm">
-          <h1 class="text-xl mb-5 text-[#272727] font-medium px-3">
+          class="container mt-10 tracking-wider md:mx-auto text-[#0f0f0f] text-justify text-sm dark:text-gray-300">
+          <h1
+            class="text-xl mb-5 text-[#272727] font-medium px-3 font-semibold">
             Kalkulator BMI
           </h1>
           <div class="row flex justify-center flex-wrap gap-7">
@@ -28,37 +31,94 @@
                 ideal juga menandakan kondisi tubuh yang sehat. Bagaimana
                 denganmu? Yuk, hitung sekarang di kalkulator BMI.
               </p>
-              <div class="bg-[#f2f3f5] p-5 md:rounded-md shadow-md">
+              <div
+                class="bg-[#f2f3f5] dark:bg-[#1E1E1E] p-5 md:rounded-md shadow-md">
                 <form action="">
-                  <span>Jenis Kelamin</span>
-                  <div
-                    class="radio-container inline-block py-3 px-1.5 bg-slate-100 rounded-md ml-3">
-                    <input
-                      type="radio"
-                      name="jenis_kelamin"
-                      id="jenis_pria"
-                      hidden />
-                    <label
-                      for="jenis_pria"
-                      class="py-2 px-3 bg-text rounded-md text-slate-600 mr-[1px] transition"
-                      >Pria</label
+                  <div class="form-input mb-4">
+                    <span
+                      ><i class="fa-solid fa-venus-mars"></i> Jenis
+                      Kelamin</span
                     >
+                    <div
+                      class="radio-container inline-block py-3 px-1.5 bg-slate-100 rounded-md ml-3">
+                      <input
+                        type="radio"
+                        name="jenis_kelamin"
+                        id="jenis_pria"
+                        checked
+                        hidden />
+                      <label
+                        for="jenis_pria"
+                        class="py-2 px-3 bg-text rounded-md text-slate-600 mr-[1px] transition"
+                        tabindex="0"
+                        >Pria</label
+                      >
+                      <input
+                        type="radio"
+                        name="jenis_kelamin"
+                        id="jenis_wanita"
+                        hidden />
+                      <label
+                        for="jenis_wanita"
+                        class="py-2 px-3 bg-text rounded-md text-slate-600 transition"
+                        tabindex="0"
+                        >Wanita</label
+                      >
+                    </div>
+                  </div>
+                  <div class="form-input relative mb-4">
+                    <i
+                      class="fa-solid fa-pencil absolute left-4 top-[50%] translate-y-[-50%]"></i>
                     <input
-                      type="radio"
-                      name="jenis_kelamin"
-                      id="jenis_wanita"
-                      hidden />
-                    <label
-                      for="jenis_wanita"
-                      class="py-2 px-3 bg-text rounded-md text-slate-600 transition"
-                      >Wanita</label
+                      type="number"
+                      name="berat_badan"
+                      id="berat_badan"
+                      placeholder="Berat Badan (kg)"
+                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm" />
+                  </div>
+                  <div class="form-input relative mb-4">
+                    <i
+                      class="fa-solid fa-pencil absolute left-4 top-[13px]"></i>
+                    <input
+                      type="number"
+                      name="usia"
+                      id="usia"
+                      placeholder="Usia (tahun 18+)"
+                      min="18"
+                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring peer invalid:ring-red-500 shadow-sm" />
+                    <span
+                      class="invisible text-red-500 hidden peer-invalid:inline-block peer-invalid:visible font-light transition-all mt-2"
+                      >Kalkulator hanya untuk 18 tahun ke atas</span
                     >
+                  </div>
+                  <div class="form-input relative mb-4">
+                    <i
+                      class="fa-solid fa-pencil absolute left-4 top-[50%] translate-y-[-50%]"></i>
+                    <input
+                      type="number"
+                      name="tinggi_badan"
+                      id="tinggi_badan"
+                      placeholder="Tinggi badan (cm)"
+                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm" />
+                  </div>
+                  <div class="form-input">
+                    <button
+                      type="reset"
+                      class="bg-white text-slate-500 border border-blue-600 px-4 py-2.5 rounded-lg mr-2 font-medium hover:bg-blue-100 transition focus:ring shadow-md">
+                      Reset
+                    </button>
+                    <button
+                      type="submit"
+                      class="px-4 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:ring shadow-md">
+                      Hitung BMI
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
             <div class="col md:flex-1 px-3">
-              <h2 class="text-base mb-2 text-[#272727] font-medium">
+              <h2
+                class="text-base mb-2 text-[#272727] font-medium font-semibold">
                 Keunggulan fitur
               </h2>
               <ol type="1" class="list-decimal pl-4 mb-7">
@@ -84,5 +144,23 @@
         </div>
       </section>
     </main>
+    <script
+      src="https://kit.fontawesome.com/0c8762722d.js"
+      crossorigin="anonymous"></script>
+    <script>
+      // Accessibility for label with input radio jenis_kelamin
+      document
+        .querySelector("label[for='jenis_wanita']")
+        .addEventListener("keypress", function (e) {
+          if (e.keyCode === 32)
+            document.getElementById("jenis_wanita").checked = true;
+        });
+      document
+        .querySelector("label[for='jenis_pria']")
+        .addEventListener("keypress", function (e) {
+          if (e.keyCode === 32)
+            document.getElementById("jenis_pria").checked = true;
+        });
+    </script>
   </body>
 </html>

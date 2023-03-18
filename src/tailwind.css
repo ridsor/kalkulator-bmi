@@ -11,12 +11,22 @@
 @layer components {
   #jenis_pria:checked + label {
     color: #3b82f6;
-    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
     background: #fff;
   }
   #jenis_wanita:checked + label {
     color: #3b82f6;
-    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
     background: #fff;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
   }
 }
