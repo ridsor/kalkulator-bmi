@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Roboto", system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  #jenis_pria:checked + label {
+    color: #3b82f6;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+  #jenis_wanita:checked + label {
+    color: #3b82f6;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+}

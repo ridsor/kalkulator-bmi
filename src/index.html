@@ -5,6 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kalkulator BMI</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+      rel="stylesheet" />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <section class="md:px-8">
+        <div
+          class="container mt-10 tracking-wider md:mx-auto text-[#0f0f0f] text-justify text-sm">
+          <h1 class="text-xl mb-5 text-[#272727] font-medium px-3">
+            Kalkulator BMI
+          </h1>
+          <div class="row flex justify-center flex-wrap gap-7">
+            <div class="col md:flex-1">
+              <p class="mb-2 px-3">
+                Berat badan ideal adalah impian semua orang. Tidak hanya
+                memiliki bentuk tubuh yang menunjang penampilan, berat badan
+                ideal juga menandakan kondisi tubuh yang sehat. Bagaimana
+                denganmu? Yuk, hitung sekarang di kalkulator BMI.
+              </p>
+              <div class="bg-[#f2f3f5] p-5 md:rounded-md shadow-md">
+                <form action="">
+                  <span>Jenis Kelamin</span>
+                  <div
+                    class="radio-container inline-block py-3 px-1.5 bg-slate-100 rounded-md ml-3">
+                    <input
+                      type="radio"
+                      name="jenis_kelamin"
+                      id="jenis_pria"
+                      hidden />
+                    <label
+                      for="jenis_pria"
+                      class="py-2 px-3 bg-text rounded-md text-slate-600 mr-[1px] transition"
+                      >Pria</label
+                    >
+                    <input
+                      type="radio"
+                      name="jenis_kelamin"
+                      id="jenis_wanita"
+                      hidden />
+                    <label
+                      for="jenis_wanita"
+                      class="py-2 px-3 bg-text rounded-md text-slate-600 transition"
+                      >Wanita</label
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col md:flex-1 px-3">
+              <h2 class="text-base mb-2 text-[#272727] font-medium">
+                Keunggulan fitur
+              </h2>
+              <ol type="1" class="list-decimal pl-4 mb-7">
+                <li>Menghitung berat badan</li>
+                <li>Menentukan kategori berat badan ideal atau tidak</li>
+                <li>Mempersiapkan program penurunan berat badan</li>
+              </ol>
+              <p class="mb-7">
+                Kalkulator ini hanya boleh digunakan oleh orang dewasa (wanita
+                hamil atau menyusui tidak boleh mengandalkan pembacaan BMI ini)
+                dan tidak ada tindakan yang harus diambil berdasarkan nilainya
+                selain berkonsultasi dengan orang yang memenuhi syarat seperti
+                dokter.
+              </p>
+              <p class="text-sm">
+                Kalkulator akan memberi Anda gambaran tentang perbandingan berat
+                badan Anda dengan nilai umum. Indeks Massa Tubuh (atau BMI)
+                dihitung sebagai berat badan Anda (dalam kilogram) dibagi dengan
+                kuadrat tinggi badan Anda (dalam meter) atau BMI = Kg/M2.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
