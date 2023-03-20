@@ -16,16 +16,15 @@
   </head>
   <body class="dark:bg-[#111]">
     <main>
-      <section class="md:px-8">
+      <section class="md:px-5">
         <div
-          class="container mt-10 tracking-wider md:mx-auto text-[#0f0f0f] text-justify text-sm dark:text-gray-300">
-          <h1
-            class="text-xl mb-5 text-[#272727] font-medium px-3 font-semibold">
+          class="container my-10 md:mx-auto text-[#0f0f0f] text-justify text-sm dark:text-gray-300">
+          <h1 class="text-xl mb-5 text-[#272727] md:px-5 px-3 font-medium">
             Kalkulator BMI
           </h1>
-          <div class="row flex justify-center flex-wrap gap-7">
-            <div class="col md:flex-1">
-              <p class="mb-2 px-3">
+          <div class="row flex justify-center flex-wrap">
+            <article class="col md:w-6/12 mb-8 sm:mb-0 md:px-5">
+              <p class="mb-3 px-3 md:px-0">
                 Berat badan ideal adalah impian semua orang. Tidak hanya
                 memiliki bentuk tubuh yang menunjang penampilan, berat badan
                 ideal juga menandakan kondisi tubuh yang sehat. Bagaimana
@@ -87,7 +86,7 @@
                       min="18"
                       class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring peer invalid:ring-red-500 shadow-sm" />
                     <span
-                      class="invisible text-red-500 hidden peer-invalid:inline-block peer-invalid:visible font-light transition-all mt-2"
+                      class="text-red-500 text-[12px] sm:text-sm h-0 overflow-hidden block invisible peer-invalid:visible font-light transition-all opacity-0 peer-invalid:h-fit peer-invalid:mt-2 peer-invalid:opacity-100"
                       >Kalkulator hanya untuk 18 tahun ke atas</span
                     >
                   </div>
@@ -115,10 +114,9 @@
                   </div>
                 </form>
               </div>
-            </div>
-            <div class="col md:flex-1 px-3">
-              <h2
-                class="text-base mb-2 text-[#272727] font-medium font-semibold">
+            </article>
+            <article class="col md:w-6/12 md:px-5 px-3">
+              <h2 class="text-base mb-2 text-[#272727] font-medium">
                 Keunggulan fitur
               </h2>
               <ol type="1" class="list-decimal pl-4 mb-7">
@@ -138,6 +136,51 @@
                 badan Anda dengan nilai umum. Indeks Massa Tubuh (atau BMI)
                 dihitung sebagai berat badan Anda (dalam kilogram) dibagi dengan
                 kuadrat tinggi badan Anda (dalam meter) atau BMI = Kg/M2.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="md:px-5">
+        <div
+          class="container my-10 text-sm text-justify text-[#0f0f0f] md:mx-auto">
+          <h1 class="font-medium text-xl md:px-5 px-3 mb-3">Hasil</h1>
+          <div class="row flex justify-center flex-wrap">
+            <div class="col md:w-6/12 md:px-5 md:mb-0 mb-8">
+              <div class="bg-[#f3f4f5] md:rounded-md p-5 shadow-md mb-3">
+                <h3 class="hasil-kualitas text-base text-center mt-3 mb-4">
+                  Berat Badan Kurang
+                </h3>
+                <h2 class="hasil-bmi font-semibold text-3xl text-center mb-7">
+                  17.7
+                </h2>
+                <p class="hasil-ket text-center mb-6">
+                  Anda kekurangan berat badan
+                </p>
+                <a
+                  href=""
+                  class="text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg mx-auto w-fit"
+                  >Download Hasil BMI</a
+                >
+              </div>
+              <div class="bg-[#f3f4f5] md:rounded-md p-5 shadow-md">
+                <p class="ket-penyakit text-center text-base my-3">
+                  Berat rendah dapat menyebabkan berbagai masalah penyakit
+                </p>
+                <ul class="daftar-penyakit text-center">
+                  <li>Infertilitas</li>
+                  <li>Anemia</li>
+                  <li>Osteoporosis</li>
+                  <li>Sistem Imun Lemah</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col md:w-6/12 md:px-5 px-3">
+              <p class="kualitas-bmi mb-3">Hasil BMI &lt; 18.5</p>
+              <p class="saran-bmi">
+                Anda berada dalam kategori kekurangan berat badan. Hubungi
+                dokter lebih lanjut mengenai pola makan dan gizi yang baik untuk
+                meningkatkan kesehatan.
               </p>
             </div>
           </div>
