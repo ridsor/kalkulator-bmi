@@ -32,7 +32,7 @@
               </p>
               <div
                 class="bg-[#f2f3f5] dark:bg-[#1E1E1E] p-5 sm:rounded-md shadow-md">
-                <form action="">
+                <form action="" id="formKalkulatorBmi">
                   <div class="form-input mb-4">
                     <span
                       ><i class="fa-solid fa-venus-mars"></i> Jenis
@@ -44,6 +44,7 @@
                         type="radio"
                         name="jenis_kelamin"
                         id="jenis_pria"
+                        value="pria"
                         checked
                         hidden />
                       <label
@@ -56,6 +57,7 @@
                         type="radio"
                         name="jenis_kelamin"
                         id="jenis_wanita"
+                        value="wanita"
                         hidden />
                       <label
                         for="jenis_wanita"
@@ -67,13 +69,16 @@
                   </div>
                   <div class="form-input relative mb-4">
                     <i
-                      class="fa-solid fa-pencil absolute left-4 top-[50%] translate-y-[-50%]"></i>
+                      class="fa-solid fa-pencil absolute left-4 top-[13px]"></i>
                     <input
                       type="number"
                       name="berat_badan"
                       id="berat_badan"
                       placeholder="Berat Badan (kg)"
-                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm" />
+                      autocomplete="off"
+                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm invalid:ring-red-500" />
+                    <span
+                      class="text-red-500 text-[12px] sm:text-sm h-0 overflow-hidden block invisible font-light transition-all opacity-0"></span>
                   </div>
                   <div class="form-input relative mb-4">
                     <i
@@ -83,6 +88,7 @@
                       name="usia"
                       id="usia"
                       placeholder="Usia (tahun 18+)"
+                      autocomplete="off"
                       min="18"
                       class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring peer invalid:ring-red-500 shadow-sm" />
                     <span
@@ -92,13 +98,16 @@
                   </div>
                   <div class="form-input relative mb-4">
                     <i
-                      class="fa-solid fa-pencil absolute left-4 top-[50%] translate-y-[-50%]"></i>
+                      class="fa-solid fa-pencil absolute left-4 top-[13px]"></i>
                     <input
                       type="number"
                       name="tinggi_badan"
                       id="tinggi_badan"
+                      autocomplete="off"
                       placeholder="Tinggi badan (cm)"
-                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm" />
+                      class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm invalid:ring-red-500" />
+                    <span
+                      class="text-red-500 text-[12px] sm:text-sm h-0 overflow-hidden block invisible font-light transition-all opacity-0"></span>
                   </div>
                   <div class="form-input">
                     <button
@@ -108,7 +117,8 @@
                     </button>
                     <button
                       type="submit"
-                      class="px-4 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:ring shadow-md">
+                      class="px-4 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:ring shadow-md"
+                      id="btnHitungBmi">
                       Hitung BMI
                     </button>
                   </div>
@@ -247,6 +257,18 @@
       src="https://kit.fontawesome.com/0c8762722d.js"
       crossorigin="anonymous"></script>
     <script>
+      // element form input kalkulator bmi
+      const form = document.getElementById("formKalkulatorBmi");
+      const berat_badan = document.getElementById("berat_badan");
+      const usia = document.getElementById("usia");
+      const tinggi_badan = document.getElementById("tinggi_badan");
+      const btnHitungBmi = document.getElementById("btnHitungBmi");
+
+      form.addEventListener("submit", handleFormSubmit);
+      handleValidateReload(berat_badan);
+      handleValidateReload(usia);
+      handleValidateReload(tinggi_badan);
+
       // Accessibility for label with input radio jenis_kelamin
       document
         .querySelector("label[for='jenis_wanita']")
@@ -260,6 +282,62 @@
           if (e.keyCode === 32)
             document.getElementById("jenis_pria").checked = true;
         });
+
+      // handle form submit
+      function handleFormSubmit(e) {
+        e.preventDefault();
+
+        const data = {
+          jenis_kelamin: e.target.jenis_kelamin.value,
+          berat_badan: e.target.berat_badan.value,
+          usia: e.target.usia.value,
+          tinggi_badan: e.target.tinggi_badan.value,
+        };
+        if (!data.berat_badan)
+          handleValidate(berat_badan, "Berat Badan tidak boleh kosong!");
+        if (!data.usia) handleValidate(usia, "Usia tidak boleh kosong!");
+        if (!data.tinggi_badan)
+          handleValidate(tinggi_badan, "Tinggi Badan tidak boleh kosong!");
+      }
+
+      // handle validasi form kalkulator bmi
+      function handleValidateReload(element) {
+        element.addEventListener("click", function () {
+          if (element.id === "usia") {
+            element.nextElementSibling.innerText =
+              "Kalkulator hanya untuk 18 tahun ke atas";
+          }
+          element.classList.remove("ring-red-500", "ring");
+          element.nextElementSibling.classList.add(
+            "h-0",
+            "opacity-0",
+            "invisible",
+            "mt-0"
+          );
+          element.nextElementSibling.classList.remove(
+            "h-fit",
+            "opacity-100",
+            "visible",
+            "mt-2"
+          );
+        });
+      }
+      function handleValidate(element, msg) {
+        element.classList.add("ring-red-500", "ring");
+        element.nextElementSibling.innerText = msg;
+        element.nextElementSibling.classList.add(
+          "h-fit",
+          "opacity-100",
+          "visible",
+          "mt-2"
+        );
+        element.nextElementSibling.classList.remove(
+          "h-0",
+          "opacity-0",
+          "invisible",
+          "mt-0"
+        );
+      }
     </script>
   </body>
 </html>
