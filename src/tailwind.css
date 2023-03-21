@@ -8,6 +8,17 @@
   }
 }
 
+.ring-color-red {
+  @apply ring ring-red-500;
+}
+
+.transition-showSpanValidateKalkulatorBmi {
+  @apply h-[20px] visible opacity-100 mt-2;
+}
+.transition-hideSpanValidateKalkulatorBmi {
+  @apply h-[0px] invisible opacity-0 mt-0;
+}
+
 @layer components {
   #jenis_pria:checked + label {
     color: #3b82f6;
