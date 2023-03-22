@@ -26,29 +26,100 @@ function handleFormSubmit(e) {
 
   const data = {
     jenis_kelamin: e.target.jenis_kelamin.value,
-    berat_badan: e.target.berat_badan.value,
-    usia: e.target.usia.value,
-    tinggi_badan: e.target.tinggi_badan.value,
+    berat_badan: Number(e.target.berat_badan.value),
+    usia: Number(e.target.usia.value),
+    tinggi_badan: Number(e.target.tinggi_badan.value),
   };
 
   // validasi form kalkulator bmi
   if (validasiKalkulatorBmi(data)) return false;
 
-  // membuat element hasil bmi
+  // menghitung bmi
+  let hasilBmi =
+    data.berat_badan / ((data.tinggi_badan / 100) * (data.tinggi_badan / 100));
+  hasilBmi = hasilBmi.toFixed(1);
+
+  // menentukan pesan berdasarkan hasil bmi
+  const message = {
+    hasilBmi,
+  };
+  if (hasilBmi < 18.5) {
+    message.hasilKualitas = "Berat Badan Kurang";
+    message.hasilKet = "Anda kekurangan berat badan";
+    message.saranBmi =
+      "Anda berada dalam kategori kekurangan berat badan.<br/>Hubungi dokter lebih lanjut mengenai pola makan dan gizi yang baik untuk meningkatkan kesehatan.";
+    message.ketPenyakit =
+      "Berat rendah dapat menyebabkan berbagai masalah penyakit";
+    message.daftarPenyakit = [
+      "Infertilitas",
+      "Anemia",
+      "Osteoporosis",
+      "Sistem Imun Lemah",
+    ];
+  } else if (hasilBmi < 25) {
+    message.hasilKualitas = "Normal";
+    message.hasilKet = "Anda memiliki berat badan ideal.<br>Good job!!";
+    message.saranBmi =
+      "Anda berada dalam kategori berat badan yang normal.<br/>Tetap pertahankan berat badan Anda dan jaga berat badan Anda dengan mengatur keseimbangan antara pola makan dan aktivitas fisik Anda.";
+  } else if (hasilBmi < 30) {
+    message.hasilKualitas = "Berat Badan Berlebih";
+    message.hasilKet = "Anda memiliki berat badan berlebih";
+    message.saranBmi =
+      "Anda berada dalam kategori overweight atau berat badan berlebih.<br/>Cara terbaik untuk menurunkan berat badan adalah dengan mengatur kalor makanan yang dikonsumsi dan berolahraga. Jika BMI Anda berada dalam kategori ini maka Anda dianjurkan untuk menurunkan berat badan hingga batas normal.";
+    message.ketPenyakit = "Beberapa penyakit yang berasal dari kegemukan";
+    message.daftarPenyakit = [
+      "Diabetes",
+      "Hipertensi",
+      "Sakit Jantung",
+      "Osteoarthritis",
+    ];
+  } else {
+    message.hasilKualitas = "Obesitas";
+    message.hasilKet = "Anda berada dalam kategori obesitas";
+    message.saranBmi =
+      "Anda berada dalam kategori obesitas.<br/>Usahakan untuk menurunkan berat badan dan menerapkan pola hidup sehat dengan menjaga makan dan aktivitas fisik. Segera kunjungi dokter untuk dilakukan pemeriksaan kesehatan lanjutan untuk mengetahui risiko yang Anda miliki terkait berat badan Anda.";
+    message.ketPenyakit = "Beberapa penyakit yang berasal dari kegemukan";
+    message.daftarPenyakit = [
+      "Diabetes",
+      "Hipertensi",
+      "Sakit Jantung",
+      "Osteoarthritis",
+    ];
+  }
+
+  // render element hasil bmi
+  renderElementHasilBmi(message);
+}
+
+function renderElementHasilBmi({
+  hasilKualitas,
+  hasilBmi,
+  hasilKet,
+  saranBmi,
+  ketPenyakit,
+  daftarPenyakit,
+}) {
+  if (typeof daftarPenyakit !== "undefined") {
+    daftarPenyakitHTML = "";
+    for (const x of daftarPenyakit) {
+      daftarPenyakitHTML += `<li>${x}</li>`;
+    }
+  }
+
   var elementHasilBmi = `<div
           class="container md:px-3 mb-16 text-sm text-justify text-[#0f0f0f] mx-auto">
           <h1 class="font-medium text-xl md:px-5 px-3 mb-3">Hasil</h1>
           <div class="row flex flex-wrap">
-            <div class="col md:w-6/12 w-full md:px-5 md:mb-0 mb-8">
-              <div class="bg-[#f3f4f5] sm:rounded-md p-3 shadow-md">
+            <div class="col md:w-6/12 w-full md:px-5 md:mb-0 mb-5">
+              <div class="bg-[#f2f3f5] sm:rounded-md p-3 shadow-md">
                 <h3 class="hasil-kualitas text-base text-center mt-3 mb-4">
-                  Berat Badan Kurang
+                  ${hasilKualitas}
                 </h3>
                 <h2 class="hasil-bmi font-semibold text-3xl text-center mb-7">
-                  17.7
+                  ${hasilBmi}
                 </h2>
                 <p class="hasil-ket text-center mb-6">
-                  Anda kekurangan berat badan
+                  ${hasilKet}
                 </p>
                 <a
                   href="#"
@@ -57,12 +128,10 @@ function handleFormSubmit(e) {
                 >
               </div>
             </div>
-            <div class="col md:w-6/12 md:px-5 px-3">
+            <div class="col md:w-6/12 md:px-5 px-3 md:mb-0 mb-2">
               <p class="kualitas-bmi mb-3">Hasil BMI &lt; 18.5</p>
               <p class="saran-bmi mb-3">
-                Anda berada dalam kategori kekurangan berat badan. Hubungi
-                dokter lebih lanjut mengenai pola makan dan gizi yang baik untuk
-                meningkatkan kesehatan.
+                ${saranBmi}
               </p>
               <div class="flex gap-2 mb-3 flex-col lg:flex-row flex-wrap">
                 <a
@@ -86,15 +155,15 @@ function handleFormSubmit(e) {
               </div>
               <div class="row flex flex-wrap">
               <div class="col md:w-6/12 md:px-5 md:mb-0 mb-8 mt-3 w-full">
-              <div class="bg-[#f3f4f5] sm:rounded-md p-3 shadow-md mb-8">
+              ${
+                hasilKualitas !== "Normal"
+                  ? `
+              <div class="bg-[#f2f3f5] sm:rounded-md p-3 shadow-md">
                 <p class="ket-penyakit text-center text-base my-3">
-                Berat rendah dapat menyebabkan berbagai masalah penyakit
+                ${ketPenyakit}
                 </p>
                 <ul class="daftar-penyakit text-center mb-6 md:mb-8">
-                  <li>Infertilitas</li>
-                  <li>Anemia</li>
-                  <li>Osteoporosis</li>
-                  <li>Sistem Imun Lemah</li>
+                ${daftarPenyakitHTML}
                 </ul>
                 <div
                   class="flex justify-center items-center flex-wrap gap-2.5 flex-col lg:flex-row">
@@ -110,8 +179,11 @@ function handleFormSubmit(e) {
                   >
                 </div>
               </div>
+              `
+                  : ``
+              }
               <div class="aplikasi">
-                <h2 class="text-base text-center font-medium mb-2">
+                <h2 class="text-base text-center font-medium mb-2 mt-8">
                   Download Aplikasi
                 </h2>
                 <ul class="list-none flex justify-center gap-2 flex-wrap">
@@ -137,27 +209,45 @@ function handleFormSubmit(e) {
 
   const displayHasilBmi = document.getElementById("display_hasil_bmi");
 
-  // menambahkan transition ke display hasil bmi
-  displayHasilBmi.classList.add("transition-showHasilBmi");
-  displayHasilBmi.classList.remove("transition-hideHasilBmi");
+  // mengecek jika ada element maka direset
+  if (displayHasilBmi.firstElementChild) {
+    // menambahkan transition ke display hasil bmi
+    displayHasilBmi.classList.add("transition-hideHasilBmi");
+    displayHasilBmi.classList.remove("transition-showHasilBmi");
 
-  // menambahkan element hasil bmi
-  displayHasilBmi.insertAdjacentHTML("beforeend", elementHasilBmi);
+    setTimeout(() => {
+      // menambahkan element hasil bmi
+      displayHasilBmi.innerHTML = elementHasilBmi;
+
+      // menambahkan transition ke display hasil bmi
+      displayHasilBmi.classList.add("transition-showHasilBmi");
+      displayHasilBmi.classList.remove("transition-hideHasilBmi");
+    }, 500);
+    window.location.href = "#display_hasil_bmi";
+  } else {
+    // menambahkan element hasil bmi
+    displayHasilBmi.innerHTML = elementHasilBmi;
+
+    // menambahkan transition ke display hasil bmi
+    displayHasilBmi.classList.add("transition-showHasilBmi");
+    displayHasilBmi.classList.remove("transition-hideHasilBmi");
+
+    window.location.href = "#display_hasil_bmi";
+  }
 }
 
 function handleBtnReset() {
   const displayHasilBmi = document.getElementById("display_hasil_bmi");
   displayHasilBmi.classList.add("transition-hideHasilBmi");
-  document
-    .getElementById("display_hasil_bmi")
-    .classList.remove("transition-showHasilBmi");
+  displayHasilBmi.classList.remove("transition-showHasilBmi");
   setTimeout(() => {
-    displayHasilBmi.removeChild(displayHasilBmi.firstElementChild);
-  }, 1000);
+    displayHasilBmi.innerHTML = "";
+  }, 500);
 }
 
 function validasiKalkulatorBmi(data) {
   let error = false;
+  
   if (!data.berat_badan) {
     handleElementValidate(berat_badan, "Berat Badan tidak boleh kosong!");
     error = true;
