@@ -231,6 +231,7 @@ function renderElementHasilBmi({
     }, 500);
   } else {
     // menambahkan element hasil bmi
+    alert('testing');
     displayHasilBmi.innerHTML = elementHasilBmi;
 
     // menambahkan transition ke display hasil bmi
