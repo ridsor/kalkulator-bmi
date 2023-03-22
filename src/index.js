@@ -227,8 +227,8 @@ function renderElementHasilBmi({
       // menambahkan transition ke display hasil bmi
       displayHasilBmi.classList.add("transition-showHasilBmi");
       displayHasilBmi.classList.remove("transition-hideHasilBmi");
+      window.location.href = "#display_hasil_bmi";
     }, 500);
-    window.location.href = "#display_hasil_bmi";
   } else {
     // menambahkan element hasil bmi
     displayHasilBmi.innerHTML = elementHasilBmi;
