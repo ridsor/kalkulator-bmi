@@ -247,7 +247,7 @@ function handleBtnReset() {
 
 function validasiKalkulatorBmi(data) {
   let error = false;
-
+  
   if (!data.berat_badan) {
     handleElementValidate(berat_badan, "Berat Badan tidak boleh kosong!");
     error = true;
