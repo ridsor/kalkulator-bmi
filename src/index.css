@@ -576,10 +576,6 @@ input[type="number"] {
   /* Firefox */
 }
 
-.static {
-  position: static;
-}
-
 .absolute {
   position: absolute;
 }
@@ -624,6 +620,10 @@ input[type="number"] {
 
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .mb-7 {
@@ -678,13 +678,13 @@ input[type="number"] {
   height: 2.5rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .list-decimal {
@@ -764,9 +764,8 @@ input[type="number"] {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#f3f4f5\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 245 / var(--tw-bg-opacity));
+.p-3 {
+  padding: 0.75rem;
 }
 
 .p-5 {
@@ -824,6 +823,11 @@ input[type="number"] {
   text-align: justify;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-\[12px\] {
   font-size: 12px;
 }
@@ -841,11 +845,6 @@ input[type="number"] {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .font-light {
