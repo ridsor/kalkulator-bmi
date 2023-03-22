@@ -231,14 +231,15 @@ function renderElementHasilBmi({
     }, 500);
   } else {
     // menambahkan element hasil bmi
-    alert('testing');
     displayHasilBmi.innerHTML = elementHasilBmi;
 
     // menambahkan transition ke display hasil bmi
     displayHasilBmi.classList.add("transition-showHasilBmi");
     displayHasilBmi.classList.remove("transition-hideHasilBmi");
 
-    location.href = "#display_hasil_bmi";
+    setTimeOut(() => {
+      location.href = "#display_hasil_bmi";
+    },0);
   }
 }
 
