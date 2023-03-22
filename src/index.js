@@ -46,6 +46,7 @@ function handleFormSubmit(e) {
   if (hasilBmi < 18.5) {
     message.hasilKualitas = "Berat Badan Kurang";
     message.hasilKet = "Anda kekurangan berat badan";
+    message.kualitasBmi = "Hasil BMI &lt; 18.5";
     message.saranBmi =
       "Anda berada dalam kategori kekurangan berat badan.<br/>Hubungi dokter lebih lanjut mengenai pola makan dan gizi yang baik untuk meningkatkan kesehatan.";
     message.ketPenyakit =
@@ -59,11 +60,13 @@ function handleFormSubmit(e) {
   } else if (hasilBmi < 25) {
     message.hasilKualitas = "Normal";
     message.hasilKet = "Anda memiliki berat badan ideal.<br>Good job!!";
+    message.kualitasBmi = "Hasil BMI diantara 18.5 dan 24.9";
     message.saranBmi =
       "Anda berada dalam kategori berat badan yang normal.<br/>Tetap pertahankan berat badan Anda dan jaga berat badan Anda dengan mengatur keseimbangan antara pola makan dan aktivitas fisik Anda.";
   } else if (hasilBmi < 30) {
     message.hasilKualitas = "Berat Badan Berlebih";
     message.hasilKet = "Anda memiliki berat badan berlebih";
+    message.kualitasBmi = "Hasil BMI diantara 25 dan 29.9";
     message.saranBmi =
       "Anda berada dalam kategori overweight atau berat badan berlebih.<br/>Cara terbaik untuk menurunkan berat badan adalah dengan mengatur kalor makanan yang dikonsumsi dan berolahraga. Jika BMI Anda berada dalam kategori ini maka Anda dianjurkan untuk menurunkan berat badan hingga batas normal.";
     message.ketPenyakit = "Beberapa penyakit yang berasal dari kegemukan";
@@ -76,6 +79,7 @@ function handleFormSubmit(e) {
   } else {
     message.hasilKualitas = "Obesitas";
     message.hasilKet = "Anda berada dalam kategori obesitas";
+    message.kualitasBmi = "Hasil BMI lebih dari 25";
     message.saranBmi =
       "Anda berada dalam kategori obesitas.<br/>Usahakan untuk menurunkan berat badan dan menerapkan pola hidup sehat dengan menjaga makan dan aktivitas fisik. Segera kunjungi dokter untuk dilakukan pemeriksaan kesehatan lanjutan untuk mengetahui risiko yang Anda miliki terkait berat badan Anda.";
     message.ketPenyakit = "Beberapa penyakit yang berasal dari kegemukan";
@@ -95,6 +99,7 @@ function renderElementHasilBmi({
   hasilKualitas,
   hasilBmi,
   hasilKet,
+  kualitasBmi,
   saranBmi,
   ketPenyakit,
   daftarPenyakit,
@@ -129,7 +134,7 @@ function renderElementHasilBmi({
               </div>
             </div>
             <div class="col md:w-6/12 md:px-5 px-3 md:mb-0 mb-2">
-              <p class="kualitas-bmi mb-3">Hasil BMI &lt; 18.5</p>
+              <p class="kualitas-bmi mb-3">${kualitasBmi}</p>
               <p class="saran-bmi mb-3">
                 ${saranBmi}
               </p>
@@ -238,16 +243,18 @@ function renderElementHasilBmi({
 
 function handleBtnReset() {
   const displayHasilBmi = document.getElementById("display_hasil_bmi");
-  displayHasilBmi.classList.add("transition-hideHasilBmi");
-  displayHasilBmi.classList.remove("transition-showHasilBmi");
-  setTimeout(() => {
-    displayHasilBmi.innerHTML = "";
-  }, 500);
+  if (displayHasilBmi.firstElementChild) {
+    displayHasilBmi.classList.add("transition-hideHasilBmi");
+    displayHasilBmi.classList.remove("transition-showHasilBmi");
+    setTimeout(() => {
+      displayHasilBmi.innerHTML = "";
+    }, 500);
+  }
 }
 
 function validasiKalkulatorBmi(data) {
   let error = false;
-  
+
   if (!data.berat_badan) {
     handleElementValidate(berat_badan, "Berat Badan tidak boleh kosong!");
     error = true;
