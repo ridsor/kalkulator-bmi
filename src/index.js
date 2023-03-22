@@ -237,9 +237,7 @@ function renderElementHasilBmi({
     displayHasilBmi.classList.add("transition-showHasilBmi");
     displayHasilBmi.classList.remove("transition-hideHasilBmi");
 
-    setTimeOut(() => {
-      location.href = "#display_hasil_bmi";
-    },0);
+    location.href = "#display_hasil_bmi";
   }
 }
 
