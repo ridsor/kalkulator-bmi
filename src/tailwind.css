@@ -13,10 +13,17 @@
 }
 
 .transition-showSpanValidateKalkulatorBmi {
-  @apply h-[20px] visible opacity-100 mt-2;
+  @apply h-5 visible opacity-100 mt-2;
 }
 .transition-hideSpanValidateKalkulatorBmi {
-  @apply h-[0px] invisible opacity-0 mt-0;
+  @apply h-0 invisible opacity-0 mt-0;
+}
+
+.transition-showHasilBmi {
+  @apply h-full visible opacity-100;
+}
+.transition-hideHasilBmi {
+  @apply h-0 invisible opacity-0;
 }
 
 @layer components {
