@@ -51,6 +51,7 @@
                         for="jenis_pria"
                         class="py-2 px-3 bg-text rounded-md text-slate-600 mr-[1px] transition"
                         tabindex="0"
+                        id="span_jenis_pria"
                         >Pria</label
                       >
                       <input
@@ -78,7 +79,7 @@
                       autocomplete="off"
                       class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm invalid:ring-red-500" />
                     <span
-                      class="text-red-500 text-[12px] sm:text-sm h-0 overflow-hidden block invisible font-light transition-all opacity-0"></span>
+                      class="text-red-500 text-[12px] sm:text-sm overflow-hidden block transition-hideSpanValidateKalkulatorBmi font-light transition-all"></span>
                   </div>
                   <div class="form-input relative mb-4">
                     <i
@@ -92,7 +93,7 @@
                       min="18"
                       class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring peer invalid:ring-red-500 shadow-sm" />
                     <span
-                      class="text-red-500 text-[12px] sm:text-sm h-0 overflow-hidden block invisible peer-invalid:visible font-light transition-all opacity-0 peer-invalid:h-fit peer-invalid:mt-2 peer-invalid:opacity-100"
+                      class="text-red-500 text-[12px] sm:text-sm transition-hideSpanValidateKalkulatorBmi overflow-hidden block peer-invalid:visible font-light transition-all peer-invalid:h-[20px] peer-invalid:mt-2 peer-invalid:opacity-100"
                       >Kalkulator hanya untuk 18 tahun ke atas</span
                     >
                   </div>
@@ -107,17 +108,18 @@
                       placeholder="Tinggi badan (cm)"
                       class="h-10 rounded-md px-4 pl-11 w-full outline-none focus:ring shadow-sm invalid:ring-red-500" />
                     <span
-                      class="text-red-500 text-[12px] sm:text-sm h-0 overflow-hidden block invisible font-light transition-all opacity-0"></span>
+                      class="text-red-500 text-[12px] sm:text-sm transition-hideSpanValidateKalkulatorBmi overflow-hidden block font-light transition-all"></span>
                   </div>
                   <div class="form-input">
                     <button
                       type="reset"
-                      class="bg-white text-slate-500 border border-blue-600 px-4 py-2.5 rounded-lg mr-2 font-medium hover:bg-blue-100 transition focus:ring shadow-md">
+                      id="btnResetBmi"
+                      class="bg-white text-slate-500 border border-blue-500 px-4 py-2.5 rounded-lg mr-2 font-medium hover:bg-blue-100 transition focus:ring shadow-md">
                       Reset
                     </button>
                     <button
                       type="submit"
-                      class="px-4 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:ring shadow-md"
+                      class="px-4 py-2.5 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 focus:ring shadow-md"
                       id="btnHitungBmi">
                       Hitung BMI
                     </button>
@@ -151,193 +153,18 @@
           </div>
         </div>
       </section>
-      <section>
-        <div
-          class="container md:px-3 mb-16 text-sm text-justify text-[#0f0f0f] mx-auto">
-          <h1 class="font-medium text-xl md:px-5 px-3 mb-3">Hasil</h1>
-          <div class="row flex flex-wrap">
-            <div class="col md:w-6/12 w-full md:px-5 md:mb-0 mb-8">
-              <div class="bg-[#f3f4f5] sm:rounded-md p-3 shadow-md">
-                <h3 class="hasil-kualitas text-base text-center mt-3 mb-4">
-                  Berat Badan Kurang
-                </h3>
-                <h2 class="hasil-bmi font-semibold text-3xl text-center mb-7">
-                  17.7
-                </h2>
-                <p class="hasil-ket text-center mb-6">
-                  Anda kekurangan berat badan
-                </p>
-                <a
-                  href="#"
-                  class="text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg mx-auto w-fit"
-                  >Download Hasil BMI</a
-                >
-              </div>
-            </div>
-            <div class="col md:w-6/12 md:px-5 px-3">
-              <p class="kualitas-bmi mb-3">Hasil BMI &lt; 18.5</p>
-              <p class="saran-bmi mb-3">
-                Anda berada dalam kategori kekurangan berat badan. Hubungi
-                dokter lebih lanjut mengenai pola makan dan gizi yang baik untuk
-                meningkatkan kesehatan.
-              </p>
-              <div class="flex gap-2 mb-3 flex-col lg:flex-row flex-wrap">
-                <a
-                  href="#"
-                  class="text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg w-fit"
-                  >Konsultasi Ahli Gizi Via Aplikasi</a
-                >
-                <a
-                  href="#"
-                  class="text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg w-fit"
-                  >Registrasi Online Ahli Gizi</a
-                >
-              </div>
-              <p>
-                BMI tidak sepenuhnya mewakili diagnosis menyeluruh dari
-                kesehatan tubuh dan resiko penyakit seseorang. Anda perlu
-                konsultasi lebih lanjut mengenai resiko dan kekhawatiran Anda
-                terkait dengan berat badan Anda.
-              </p>
-            </div>
-          </div>
-          <div class="row flex flex-wrap">
-            <div class="col md:w-6/12 md:px-5 md:mb-0 mb-8 mt-3 w-full">
-              <div class="bg-[#f3f4f5] sm:rounded-md p-3 shadow-md mb-8">
-                <p class="ket-penyakit text-center text-base my-3">
-                  Berat rendah dapat menyebabkan berbagai masalah penyakit
-                </p>
-                <ul class="daftar-penyakit text-center mb-6 md:mb-8">
-                  <li>Infertilitas</li>
-                  <li>Anemia</li>
-                  <li>Osteoporosis</li>
-                  <li>Sistem Imun Lemah</li>
-                </ul>
-                <div
-                  class="flex justify-center items-center flex-wrap gap-2.5 flex-col lg:flex-row">
-                  <a
-                    href="#"
-                    class="text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg w-fit"
-                    >Konsultasi Dokter Via Aplikasi</a
-                  >
-                  <a
-                    href="#"
-                    class="text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg w-fit"
-                    >Registrasi Online Sekarang</a
-                  >
-                </div>
-              </div>
-              <div class="aplikasi">
-                <h2 class="text-base text-center font-medium mb-2">
-                  Download Aplikasi
-                </h2>
-                <div class="ul list-none flex justify-center gap-2 flex-wrap">
-                  <li>
-                    <a href="#">
-                      <img
-                        src="https://static.rsmurniteguh.app/sites/Images/Content/google-play.png"
-                        alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img
-                        src="https://static.rsmurniteguh.app/sites/Images/Content/app-store.png"
-                        alt="" />
-                    </a>
-                  </li>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section
+        id="display_hasil_bmi"
+        class="transition-all duration-1000 transition-hideHasilBmi overflow-hidden">
+        <!-- <div
+          class="mb-16 text-xl md:px-5 px-3 mb-3 w-full md:px-5 md:mb-0 mb-8 sm:rounded-md p-3 shadow-md text-base text-center mt-3 mb-4 font-semibold text-3xl text-center mb-7 text-center mb-6 text-white font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg mx-auto w-fit md:w-6/12 md:px-5 px-3 mb-3 flex gap-2 mb-3 flex-col lg:flex-row flex-wrap font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg w-fit font-medium shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg md:w-6/12 md:px-5 md:mb-0 mb-8 mt-3 w-full bg-[#f3f4f5] sm:rounded-md p-3 shadow-md mb-8 text-center text-base my-3 text-center mb-6 md:mb-8 justify-center items-center flex-wrap gap-2.5 flex-col lg:flex-row shadow-md bg-blue-500 hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg w-fit hover:bg-blue-600 focus:ring block px-4 py-2.5 rounded-lg text-base text-center font-medium mb-2 list-none flex justify-center gap-2 flex-wrap"
+        </div> -->
       </section>
     </main>
     <script
       src="https://kit.fontawesome.com/0c8762722d.js"
-      crossorigin="anonymous"></script>
-    <script>
-      // element form input kalkulator bmi
-      const form = document.getElementById("formKalkulatorBmi");
-      const berat_badan = document.getElementById("berat_badan");
-      const usia = document.getElementById("usia");
-      const tinggi_badan = document.getElementById("tinggi_badan");
-      const btnHitungBmi = document.getElementById("btnHitungBmi");
-
-      form.addEventListener("submit", handleFormSubmit);
-      handleValidateReload(berat_badan);
-      handleValidateReload(usia);
-      handleValidateReload(tinggi_badan);
-
-      // Accessibility for label with input radio jenis_kelamin
-      document
-        .querySelector("label[for='jenis_wanita']")
-        .addEventListener("keypress", function (e) {
-          if (e.keyCode === 32)
-            document.getElementById("jenis_wanita").checked = true;
-        });
-      document
-        .querySelector("label[for='jenis_pria']")
-        .addEventListener("keypress", function (e) {
-          if (e.keyCode === 32)
-            document.getElementById("jenis_pria").checked = true;
-        });
-
-      // handle form submit
-      function handleFormSubmit(e) {
-        e.preventDefault();
-
-        const data = {
-          jenis_kelamin: e.target.jenis_kelamin.value,
-          berat_badan: e.target.berat_badan.value,
-          usia: e.target.usia.value,
-          tinggi_badan: e.target.tinggi_badan.value,
-        };
-        if (!data.berat_badan)
-          handleValidate(berat_badan, "Berat Badan tidak boleh kosong!");
-        if (!data.usia) handleValidate(usia, "Usia tidak boleh kosong!");
-        if (!data.tinggi_badan)
-          handleValidate(tinggi_badan, "Tinggi Badan tidak boleh kosong!");
-      }
-
-      // handle validasi form kalkulator bmi
-      function handleValidateReload(element) {
-        element.addEventListener("click", function () {
-          if (element.id === "usia") {
-            element.nextElementSibling.innerText =
-              "Kalkulator hanya untuk 18 tahun ke atas";
-          }
-          element.classList.remove("ring-red-500", "ring");
-          element.nextElementSibling.classList.add(
-            "h-0",
-            "opacity-0",
-            "invisible",
-            "mt-0"
-          );
-          element.nextElementSibling.classList.remove(
-            "h-fit",
-            "opacity-100",
-            "visible",
-            "mt-2"
-          );
-        });
-      }
-      function handleValidate(element, msg) {
-        element.classList.add("ring-red-500", "ring");
-        element.nextElementSibling.innerText = msg;
-        element.nextElementSibling.classList.add(
-          "h-fit",
-          "opacity-100",
-          "visible",
-          "mt-2"
-        );
-        element.nextElementSibling.classList.remove(
-          "h-0",
-          "opacity-0",
-          "invisible",
-          "mt-0"
-        );
-      }
-    </script>
+      crossorigin="anonymous"
+      defer></script>
+    <script src="./index.js" defer></script>
   </body>
 </html>
